@@ -1,0 +1,32 @@
+{
+  "name": "demo-qa",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "npx cypress run",
+    "clean:reports": "if exist cypress\\reports rmdir /s/q cypress\\reports && mkdir cypress\\reports && mkdir cypress\\reports\\mochareports",
+    "combine-reports": "mochawesome-merge cypress/reports/mocha/*.json > cypress/reports/mochareports/report.json",
+    "generate-report": "marge cypress/reports/mochareports/report.json -f report -o cypress/reports/mochareports --inline",
+    "posttest": "npm run combine-reports && npm run generate-report"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ClaudiaLaza/demo-qa.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ClaudiaLaza/demo-qa/issues"
+  },
+  "homepage": "https://github.com/ClaudiaLaza/demo-qa#readme",
+  "description": "",
+  "devDependencies": {
+    "@faker-js/faker": "^9.8.0",
+    "cypress": "^14.4.1",
+    "cypress-mochawesome-reporter": "^3.8.2",
+    "cypress-multi-reporters": "^2.0.5"
+  },
+  "dependencies": {
+    "lodash": "^4.17.21"
+  }
+}
